@@ -30,40 +30,8 @@ const generateSquares = () => {
         elem.value = boardArr[i][j];
       }
 
-      elem.addEventListener("focusin", () => handleFocus(elem));
       elem.addEventListener("keyup", (ev) => handleInput(ev));
       squareContainer.appendChild(elem);
-    }
-  }
-};
-
-const handleFocus = (elem) => {
-  const squares = document.querySelectorAll(".square");
-
-  squares.forEach((el) => el.classList.remove("selected"));
-  elem.classList.add("selected");
-
-  const index = Array.from(squares).indexOf(elem);
-  const row = Math.floor(index / 9);
-  const col = index % 9;
-
-  // Highlight all squares in the same row
-  for (let i = 0; i < 9; i++) {
-    squares[row * 9 + i].classList.add("selected");
-  }
-
-  // Highlight all squares in the same column
-  for (let i = 0; i < 9; i++) {
-    squares[i * 9 + col].classList.add("selected");
-  }
-
-  // Highlight the 3x3 box
-  const startRow = Math.floor(row / 3) * 3; // Get the starting row of the box
-  const startCol = Math.floor(col / 3) * 3; // Get the starting column of the box
-
-  for (let r = startRow; r < startRow + 3; r++) {
-    for (let c = startCol; c < startCol + 3; c++) {
-      squares[r * 9 + c].classList.add("selected");
     }
   }
 };
