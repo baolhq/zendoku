@@ -1,22 +1,20 @@
 body {
   margin: 0;
   padding: 0;
-  /* display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; */
+  height: 100vh;
 }
 
 #square-container {
   display: grid;
   grid-template-columns: repeat(9, 2rem);
   grid-template-rows: repeat(9, 2rem);
-  gap: 0.25rem;
 }
 
 .square {
   border: 1px solid var(--surface);
-  border-radius: 0.25rem;
   border-collapse: collapse;
   text-align: center;
   outline: none;
@@ -30,8 +28,30 @@ body {
   color: var(--lavender);
 }
 
-.square.box {
-  background: var(--surface);
+/* Target the 3x3 boxes */
+.square:nth-child(27n + 1),
+.square:nth-child(27n + 2),
+.square:nth-child(27n + 3),
+.square:nth-child(27n + 4),
+.square:nth-child(27n + 5),
+.square:nth-child(27n + 6),
+.square:nth-child(27n + 7),
+.square:nth-child(27n + 8),
+.square:nth-child(27n + 9) {
+  border-top: 2px solid var(--subtext); /* Top border */
+}
+
+.square:nth-child(9n + 1) {
+  border-left: 2px solid var(--subtext); /* Left border */
+}
+
+.square:nth-child(9n),
+.square:nth-child(3n) {
+  border-right: 2px solid var(--subtext); /* Right border */
+}
+
+.square:nth-child(n + 73) {
+  border-bottom: 2px solid var(--subtext); /* Bottom border */
 }
 
 .square.selected {

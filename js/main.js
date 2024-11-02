@@ -15,6 +15,9 @@ const generateSquares = () => {
   const boardStr = sudoku.generate(Difficulties.EASY);
   const boardArr = sudoku.board_string_to_grid(boardStr);
 
+  // const res = sudoku.solve(boardStr);
+  // sudoku.print_board(res);
+
   for (let i = 0; i < Math.sqrt(SIZE); i++) {
     for (let j = 0; j < Math.sqrt(SIZE); j++) {
       const elem = document.createElement("input");
@@ -27,20 +30,10 @@ const generateSquares = () => {
         elem.value = boardArr[i][j];
       }
 
-      addBoxesStyling(elem, i, j);
       elem.addEventListener("focusin", () => handleFocus(elem));
       elem.addEventListener("keyup", (ev) => handleInput(ev));
       squareContainer.appendChild(elem);
     }
-  }
-};
-
-//TODO: Need refactoring
-const addBoxesStyling = (elem, i, j) => {
-  if (i <= 2 || i >= 6) {
-    if (j > 2 && j < 6) elem.classList.add("box");
-  } else if (j <= 2 || j >= 6) {
-    elem.classList.add("box");
   }
 };
 
